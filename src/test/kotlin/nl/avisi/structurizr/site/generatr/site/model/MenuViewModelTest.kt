@@ -173,6 +173,31 @@ class MenuViewModelTest : ViewModelTest() {
             }
     }
 
+    @Test
+    fun `change softwareSystem links to the context page`() {
+        val generatorContext = generatorContext(branches = listOf("main"), currentBranch = "main")
+        generatorContext.workspace.views.configuration.addProperty("generatr.site.menuLinkDest", "context")
+        val system1 = generatorContext.workspace.model.addSoftwareSystem("System 1")
+        val system2 = generatorContext.workspace.model.addSoftwareSystem("System 2")
+        val pageViewModel = createPageViewModel(generatorContext)
+        val viewModel = MenuViewModel(generatorContext, pageViewModel)
+
+        assertThat(viewModel.softwareSystemItems).containsExactly(
+            LinkViewModel(
+                pageViewModel,
+                "System 1",
+                SoftwareSystemPageViewModel.url(system1, SoftwareSystemPageViewModel.Tab.SYSTEM_CONTEXT),
+                Match.CHILD
+            ),
+            LinkViewModel(
+                pageViewModel,
+                "System 2",
+                SoftwareSystemPageViewModel.url(system2, SoftwareSystemPageViewModel.Tab.SYSTEM_CONTEXT),
+                Match.CHILD
+            )
+        )
+    }
+
     private fun createPageViewModel(generatorContext: GeneratorContext, url: String = "/master/page"): PageViewModel {
         return object : PageViewModel(generatorContext) {
             override val url = url

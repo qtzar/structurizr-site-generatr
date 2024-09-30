@@ -22,7 +22,8 @@
 
 # Structurizr Site Generatr
 
-A static site generator for [C4 architecture models](https://c4model.com/) created with [Structrizr DSL](https://docs.structurizr.com/dsl).
+A static site generator for [C4 architecture models](https://c4model.com/) created
+with [Structrizr DSL](https://docs.structurizr.com/dsl).
 See [Background](#background) for the story behind this tool.
 
 [Click here to see an example of a generated site](https://avisi-cloud.github.io/structurizr-site-generatr) based on
@@ -35,10 +36,12 @@ is generated from the example workspace in this repository.
 - Generates diagrams in SVG, PNG and PlantUML format, which can be viewed and downloaded from the generated site.
 - Easy browsing through the site by clicking on software system and container elements in the diagrams. Note that
   external software systems are excluded from the menu. A software system is considered external when it lives outside
-  the (deprecated) enterprise boundary or when it contains a specific tag, see [Customizing the generated website](#customizing-the-generated-website). 
+  the (deprecated) enterprise boundary or when it contains a specific tag,
+  see [Customizing the generated website](#customizing-the-generated-website).
 - Start a development server which generates a site, serves it and updates the site automatically whenever a file that's
   part of the Structurizr workspace changes.
-- Include documentation (in Markdown or AsciiDoc format) in the generated site. Both workspace level documentation and software
+- Include documentation (in Markdown or AsciiDoc format) in the generated site. Both workspace level documentation and
+  software
   system level documentation are included in the site.
 - Include ADR's in the generated site. Again, both workspace level ADR's and software system level ADR's are included in
   the site.
@@ -180,7 +183,8 @@ installed> structurizr-site-generatr generate-site --workspace-file workspace.ds
 ```
 
 Here, the `--workspace-file` or `-w` parameter specifies the input
-[C4 Workspace DSL file](https://docs.structurizr.com/dsl) to the `generate-site` command. The `--assets-dir` or `-a` parameter is not
+[C4 Workspace DSL file](https://docs.structurizr.com/dsl) to the `generate-site` command. The `--assets-dir` or `-a`
+parameter is not
 required, but usually needed as well. Additional parameters that affect website generation can be reviewed
 using the `--help` operator.
 
@@ -211,7 +215,8 @@ structurizr-site-generatr generate-site
     --default-branch main
 ```
 
-or you can choose to build all branches that are found in the repository and exclude specific ones by using the --all-branches and --exclude-branches options.
+or you can choose to build all branches that are found in the repository and exclude specific ones by using the
+--all-branches and --exclude-branches options.
 
 ```shell
 structurizr-site-generatr generate-site
@@ -228,8 +233,10 @@ Both the --branches and --exclude-branches options are comma separated lists and
 ### Start a development web server around the generated website
 
 To aid composition of [C4 Workspace DSL files](https://docs.structurizr.com/dsl), the `serve` command will
-generate a website from the input .dsl specified with `-w` _and_ start a web server to view it. **Default port** for the web server is **8080**.
-A different port for the web server can be specified with `-p PORT`. Additional parameters that affect website generation and the development
+generate a website from the input .dsl specified with `-w` _and_ start a web server to view it. **Default port** for the
+web server is **8080**.
+A different port for the web server can be specified with `-p PORT`. Additional parameters that affect website
+generation and the development
 web server can be reviewed using the `--help` operator.
 
 ```shell
@@ -252,8 +259,10 @@ is needed to expose the container's port 8080 to the host (web browser). In the 
 
 By default, the site generator uses the
 [C4PlantUmlExporter](https://docs.structurizr.com/export/plantuml#c4plantumlexporter)
-to generate the diagrams. When using this exporter, all properties available for the C4PlantUMLExporter, e.g. `c4plantuml.tags`, can be applied
-and affect the diagrams in the generate site. See also [Diagram notation](https://docs.structurizr.com/export/comparison) for an overview of supported features
+to generate the diagrams. When using this exporter, all properties available for the C4PlantUMLExporter, e.g.
+`c4plantuml.tags`, can be applied
+and affect the diagrams in the generate site. See
+also [Diagram notation](https://docs.structurizr.com/export/comparison) for an overview of supported features
 and limitations for this exporter.
 
 The look and feel of the generated site can be customized with several additional view properties in the C4
@@ -273,6 +282,7 @@ architecture model:
 | `generatr.site.externalTag`             | Software systems containing this tag will be considered external                                                                                                                                                                                                                                                                                 |                                |                                                      |
 | `generatr.site.nestGroups`              | Will show software systems in the left side navigator in collapsable groups                                                                                                                                                                                                                                                                      | `false`                        | `true`                                               |
 | `generatr.site.cdn`                     | Specifies the CDN base location for fetching NPM packages for browser runtime dependencies. Defaults to jsDelivr, but can be changed to e.g. an on-premise location.                                                                                                                                                                             | `https://cdn.jsdelivr.net/npm` | `https://cdn.my-company/npm`                         |
+| `generatr.site.menuLinkDest`            | Allows you to override the destination of the links on softwareSystems in the site navigation menu. When set to 'context' the link will go directly to the context page.                                                                                                                                                                         | `info`                         | `context`                                            |
 
 See the included example for usage of some those properties in the
 [C4 architecture model example](https://github.com/avisi-cloud/structurizr-site-generatr/blob/main/docs/example/workspace.dsl#L163).

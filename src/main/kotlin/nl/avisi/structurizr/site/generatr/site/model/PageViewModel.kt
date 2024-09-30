@@ -25,6 +25,7 @@ abstract class PageViewModel(protected val generatorContext: GeneratorContext) {
     val includedSoftwareSystems = generatorContext.workspace.includedSoftwareSystems
     val configuration = generatorContext.workspace.views.configuration.properties
     val includeTreeview = configuration.getOrDefault("generatr.site.nestGroups", "false").toBoolean()
+    val menuLinkDest = configuration.getOrDefault("generatr.site.menuLinkDest", "info")
 
     abstract val url: String
     abstract val pageSubTitle: String

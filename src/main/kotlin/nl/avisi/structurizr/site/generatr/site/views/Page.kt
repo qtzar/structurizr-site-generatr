@@ -58,7 +58,7 @@ private fun HTML.bodyFragment(viewModel: PageViewModel, block: DIV.() -> Unit) {
 
         div(classes = "site-layout") {
             id = "site"
-            menu(viewModel.menu, viewModel.includeTreeview)
+            menu(viewModel.menu, viewModel.includeTreeview, viewModel.menuLinkDest)
             div(classes = "container is-fluid has-background-white") {
                 block()
             }
